@@ -12,23 +12,110 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        body { position: relative; min-height: 100vh; }
+        html, body { min-height: 100%; }
+        body { position: relative; min-height: 100dvh; background-color: #eef7f5; overflow: hidden; }
         .bg-dreamy { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
         .bg-dreamy-gradient {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, #f5f7ff 0%, #ecf2ff 20%, #e2ecff 45%, #d8e4ff 70%, #d3dfff 100%);
+            background: linear-gradient(135deg, #eef7f5 0%, #f8faf8 48%, #fff8eb 100%);
         }
         .bg-dreamy-orb {
             position: absolute;
             border-radius: 50%;
             filter: blur(100px);
             -webkit-filter: blur(100px);
-            opacity: 0.22;
         }
-        .bg-dreamy-orb-1 { width: 70vmax; height: 70vmax; background: #c4ddff; top: -15%; left: -15%; }
-        .bg-dreamy-orb-2 { width: 60vmax; height: 60vmax; background: #b0c9ff; bottom: -20%; right: -10%; opacity: 0.18; filter: blur(120px); -webkit-filter: blur(120px); }
-        .bg-dreamy-orb-3 { width: 45vmax; height: 45vmax; background: #e0ebff; top: 40%; right: 5%; opacity: 0.12; filter: blur(80px); -webkit-filter: blur(80px); }
+        .bg-dreamy-orb-1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(45, 166, 153, 0.25) 0%, rgba(45, 166, 153, 0) 70%);
+            top: -300px;
+            right: -200px;
+            left: auto;
+            opacity: 0.8;
+        }
+        .bg-dreamy-orb-2 {
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0) 70%);
+            bottom: -300px;
+            left: -300px;
+            right: auto;
+            opacity: 0.8;
+        }
+        .bg-dreamy-orb-3 { display: none; }
+        .register-shell {
+            height: min(94dvh, 720px);
+        }
+        .register-panel {
+            justify-content: flex-start;
+        }
+        .register-content {
+            margin-top: clamp(1.5rem, 5dvh, 3rem);
+        }
+        .register-form {
+            gap: 0.75rem;
+        }
+        .register-form > div {
+            margin-bottom: 0;
+        }
+        .register-form input {
+            padding-top: 0.55rem;
+            padding-bottom: 0.55rem;
+        }
+        .register-form .register-submit {
+            padding-top: 0.65rem;
+            padding-bottom: 0.65rem;
+            margin-top: 0.25rem;
+        }
+        @media (max-height: 700px) {
+            .register-panel {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+            .register-content {
+                margin-top: 1rem;
+            }
+            .register-content .mb-8 {
+                margin-bottom: 1rem;
+            }
+            .register-content .w-20 {
+                width: 3.5rem;
+                height: 3.5rem;
+            }
+            .register-content .w-16 {
+                width: 2.75rem;
+                height: 2.75rem;
+            }
+            .register-content .w-8 {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+        @media (max-width: 767px) {
+            body {
+                overflow-y: auto;
+            }
+            .register-viewport {
+                align-items: flex-start;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+            .register-shell {
+                height: auto;
+                min-height: calc(100dvh - 2rem);
+            }
+            .register-panel {
+                padding: 1.25rem 1.25rem 1.5rem;
+            }
+            .register-content {
+                margin-top: 1.25rem;
+            }
+            .register-content .mb-8 {
+                margin-bottom: 1.25rem;
+            }
+        }
     </style>
     <svg class="bg-grain" style="position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0.04;" aria-hidden="true">
         <filter id="grain-filter-register"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/></filter>
@@ -42,15 +129,15 @@
         <div class="bg-dreamy-orb bg-dreamy-orb-2"></div>
         <div class="bg-dreamy-orb bg-dreamy-orb-3"></div>
     </div>
-    <div class="min-h-screen flex items-center justify-center py-10 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="flex w-full max-w-6xl rounded-2xl overflow-hidden min-h-[600px] backdrop-blur-xl bg-white/60 border border-white/50 shadow-[0_18px_60px_rgba(255,255,255,0.45)]">
-            <div class="w-full md:w-7/12 min-w-0 flex flex-col justify-between py-12 px-8 sm:px-10 lg:px-14 relative">
+    <div class="register-viewport min-h-[100dvh] h-[100dvh] flex items-center justify-center px-3 sm:px-6 lg:px-8 relative z-10">
+        <div class="register-shell flex w-full max-w-6xl rounded-2xl overflow-hidden backdrop-blur-xl bg-white/70 border border-white/70 shadow-[0_18px_60px_rgba(15,118,110,0.14)]">
+            <div class="register-panel w-full md:w-7/12 min-w-0 flex flex-col py-12 px-8 sm:px-10 lg:px-14 relative">
                 <div class="flex justify-end items-center text-sm text-gray-500">
                     <span class="mr-2">Already registered?</span>
                     <a href="{{ route('login') }}" class="px-4 py-1.5 border border-gray-300 rounded-full text-gray-600 font-medium hover:bg-gray-50 hover:text-gray-800 transition-colors">Login</a>
                 </div>
 
-                <div class="w-full mx-auto" style="max-width: 360px;">
+                <div class="register-content w-full mx-auto" style="max-width: 320px;">
                     <div class="mb-8 text-center">
                         <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
                              style="background: radial-gradient(circle at 50% 45%, rgba(116,56,50,0.18) 0%, rgba(116,56,50,0.10) 35%, rgba(116,56,50,0.00) 72%);">
@@ -65,7 +152,7 @@
                         <p class="text-gray-400 mt-2 text-sm font-normal">Enter your details to register.</p>
                     </div>
 
-                    <form method="POST" action="{{ route('register') }}" class="space-y-5">
+                    <form method="POST" action="{{ route('register') }}" class="register-form flex flex-col">
                         @csrf
 
                         <div>
@@ -147,20 +234,16 @@
                         </div>
 
                         <div class="pt-2 mb-8">
-                            <button type="submit" class="w-full flex justify-center items-center py-3 px-4 rounded-full text-sm font-medium text-white shadow-[0_12px_28px_rgba(255,255,255,0.28)] transition hover:shadow-[0_14px_34px_rgba(255,255,255,0.34)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0D1A63] bg-gradient-to-r from-[#0D1A63] to-[#1b2f8a] hover:from-[#050B30] hover:to-[#050B30]">
+                            <button type="submit" class="register-submit w-full flex justify-center items-center py-3 px-4 rounded-full text-sm font-medium text-white shadow-[0_12px_28px_rgba(255,255,255,0.28)] transition hover:shadow-[0_14px_34px_rgba(255,255,255,0.34)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0D1A63] bg-gradient-to-r from-[#0D1A63] to-[#1b2f8a] hover:from-[#050B30] hover:to-[#050B30]">
                                 Register
                             </button>
                         </div>
                     </form>
                 </div>
 
-                <div class="absolute bottom-6 left-8 sm:left-10 lg:left-14 flex items-center text-xs text-[#0D1A63]">
-                    <span class="w-1.5 h-1.5 mr-2"></span>
-                    &copy; {{ date('Y') }} Manajemen Logistic.
-                </div>
             </div>
 
-            <div class="hidden md:flex md:w-5/12 min-w-0 relative items-center justify-center py-12 px-8 sm:px-10 lg:px-14 rounded-r-2xl overflow-hidden" style="background: linear-gradient(160deg, #2B8AE2 0%, #0D1A63 60%, #18214f 100%);">
+            <div class="hidden md:flex md:w-5/12 min-w-0 relative items-center justify-center py-10 px-8 sm:px-10 lg:px-14 rounded-r-2xl overflow-hidden" style="background: linear-gradient(160deg, #0f766e 0%, #115e59 58%, #12343b 100%);">
                 <div class="absolute inset-0 z-0 flex items-center justify-end pointer-events-none opacity-20">
                     <svg class="w-[70%] h-[60%] max-h-[280px] translate-x-[12%]" viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <defs>

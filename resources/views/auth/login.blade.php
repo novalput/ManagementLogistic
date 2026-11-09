@@ -50,6 +50,22 @@
         }
         /* Remove 3rd orb */
         .bg-dreamy-orb-3 { display: none; }
+        @media (max-width: 767px) {
+            body {
+                overflow-y: auto;
+            }
+            .login-viewport {
+                min-height: 100dvh;
+                height: auto;
+                align-items: flex-start;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+            .login-shell {
+                height: auto;
+                min-height: calc(100dvh - 2rem);
+            }
+        }
     </style>
 </head>
 <body class="font-sans text-gray-800 antialiased">
@@ -59,10 +75,10 @@
         <div class="bg-dreamy-orb bg-dreamy-orb-2"></div>
         <div class="bg-dreamy-orb bg-dreamy-orb-3"></div>
     </div>
-    <div class="min-h-[100dvh] h-[100dvh] flex items-center justify-center px-3 sm:px-6 lg:px-8 relative z-10">
+    <div class="login-viewport min-h-[100dvh] h-[100dvh] flex items-center justify-center px-3 sm:px-6 lg:px-8 relative z-10">
 
         <!-- Main layout: kiri login (lebih besar), kanan Warehouse (lebih kecil) -->
-        <div class="flex w-full max-w-6xl h-[min(94dvh,720px)] rounded-2xl overflow-hidden backdrop-blur-xl bg-white/70 border border-white/70 shadow-[0_18px_60px_rgba(15,118,110,0.14)]">
+        <div class="login-shell flex w-full max-w-6xl h-[min(94dvh,720px)] rounded-2xl overflow-hidden backdrop-blur-xl bg-white/70 border border-white/70 shadow-[0_18px_60px_rgba(15,118,110,0.14)]">
             <!-- Left panel: login form -->
             <div class="w-full md:w-7/12 min-w-0 flex flex-col justify-between py-12 px-8 sm:px-10 lg:px-14 relative">
                 <!-- Top Right: Register Link -->
@@ -157,11 +173,6 @@
 
                 </div>
 
-                <!-- Copyright: bottom-left corner -->
-                <div class="absolute bottom-6 left-8 sm:left-10 lg:left-14 flex items-center text-xs text-[#0D1A63]">
-                    <span class="w-1.5 h-1.5 rounded-full mb-2"></span>
-                    &copy; {{ date('Y') }} Manajemen Logistic.
-                </div>
             </div>
 
             <!-- Right panel: branding Warehouse -->
