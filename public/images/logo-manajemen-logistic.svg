@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180" role="img" aria-labelledby="title desc">
+  <title id="title">Manajemen Logistic</title>
+  <desc id="desc">Logo Manajemen Logistic berbentuk kotak penyimpanan dengan panah alur</desc>
+  <rect x="12" y="12" width="156" height="156" rx="34" fill="#0f766e"/>
+  <path d="M52 62h76v26H78v30h50v26H52V62Z" fill="#ffffff"/>
+  <path d="M112 48h28v48h-28z" fill="#f59e0b"/>
+  <path d="m126 34 27 27-27 27V72H94V50h32V34Z" fill="#f59e0b"/>
+  <text x="198" y="92" fill="#12343b" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">Manajemen</text>
+  <text x="198" y="140" fill="#0f766e" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">Logistic</text>
+</svg>
